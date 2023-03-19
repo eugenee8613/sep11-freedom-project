@@ -17,6 +17,7 @@ database.ref('workouts').once('value').then(function(snapshot){
         workoutPlanner += '<div><h2>' + workout.name + '</h2><p>' + workout.description + '</p></div>';
     });
     document.getElementById('workout-planner').innerHTML = workoutPlanner;
+```
 
 
 
