@@ -29,6 +29,9 @@ Skills
     Me and my partner are using the skills How to google, How to learn, and How to read. We are  using these skills by taking information of different places and reading documentations then putting it into the code and changing it to fit our needs and making it do for the requirements of our MVP.
 
 
+
+Sources: https://console.firebase.google.com/project/chicken-a44ee/overview
+
 [Previous](entry03.md) | [Next](entry05.md)
 
 [Home](../README.md)
