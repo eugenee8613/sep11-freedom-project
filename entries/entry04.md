@@ -27,12 +27,13 @@ Engineering Design Process
 
 Skills
     Me and my partner are using the skills How to google, How to learn, and How to read. We are  using these skills by taking information of different places and reading documentations then putting it into the code and changing it to fit our needs and making it do for the requirements of our MVP.
+    Me personally, I am focusing on reading and comprehending tutorials and tasks so further on I can understand how to create better creations using code.
 
 
 
-Source 1: https://console.firebase.google.com/project/chicken-a44ee/overview
+Source 1: https://console.firebase.google.com/project/chicken-a44ee/overview --> This is our main source of firebase where we do all of our work.
 
-Source 2: https://www.freecodecamp.org/news/how-to-build-an-event-booking-app-using-html-css-javascript-and-firebase/
+Source 2: https://www.freecodecamp.org/news/how-to-build-an-event-booking-app-using-html-css-javascript-and-firebase/ --> this is the link we used for a for firebase to get started.
 [Previous](entry03.md) | [Next](entry05.md)
 
 [Home](../README.md)
