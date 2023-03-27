@@ -30,8 +30,9 @@ Skills
 
 
 
-Sources: https://console.firebase.google.com/project/chicken-a44ee/overview
+Source 1: https://console.firebase.google.com/project/chicken-a44ee/overview
 
+Source 2: https://www.freecodecamp.org/news/how-to-build-an-event-booking-app-using-html-css-javascript-and-firebase/
 [Previous](entry03.md) | [Next](entry05.md)
 
 [Home](../README.md)
