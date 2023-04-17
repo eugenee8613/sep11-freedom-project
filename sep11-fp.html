@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Planner</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Workout Planner</h1>
+      <p id="user-profile"></p>
+      <p id="user-profile"><button onclick="login()">Log in</button></p>
+      <form id="workout-form">
+        <label>
+          <input type="checkbox" name="upper-body"> Upper Body
+        </label>
+        <label>
+          <input type="checkbox" name="lower-body"> Lower Body
+        </label>
+        <label>
+          <input type="checkbox" name="cardio"> Cardio
+        </label>
+        <button type="submit">Generate Workout</button>
+      </form>
+      <!DOCTYPE html>
+</html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Planner</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Workout Planner</h1>
+      <p id="user-profile"></p>
+    </div>
+    <div>
+      <h2>Select Workout Sections:</h2>
+      <label><input type="checkbox" name="sections" value="Cardio">Cardio</label>
+      <label><input type="checkbox" name="sections" value="Strength">Strength</label>
+      <label><input type="checkbox" name="sections" value="Flexibility">Flexibility</label>
+      <button id="generate-workout">Generate Workout</button>
+    </div>
+    <div id="workout-planner"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script>
+      var config = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        databaseURL: "YOUR_DATABASE_URL",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID"
+      };
+      firebase.initializeApp(config);
+      var database = firebase.database();
+
+      document.getElementById('generate-workout').addEventListener('click', function() {
+        var sections = [];
+        var checkboxes = document.getElementsByName('sections');
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            sections.push(checkboxes[i].value);
+          }
+        }
+
+        database.ref('workouts').once('value').then(function(snapshot) {
+          var workoutPlanner = '';
+          snapshot.forEach(function(childSnapshot) {
+            var workout = childSnapshot.val();
+            if (sections.length === 0 || sections.includes(workout.section)) {
+              workoutPlanner += '<div><h2>' + workout.name + '</h2><p>' + workout.description + '</p></div>';
+            }
+          });
+          document.getElementById('workout-planner').innerHTML = workoutPlanner;
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
+    </div>
+    <div id="workout-planner"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js%22%3E</script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js%22%3E</script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js%22%3E</script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script>
+  // Initialize Firebase
+  var firebaseConfig = {
+    // Your Firebase project configuration
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  // Get a reference to the database service
+  var database = firebase.database();
+</script>
+
+
+    <script>
+
+        document.getElementById('workout-form').addEventListener('submit', function(event) {
+         event.preventDefault();
+            generateWorkout();
+        });
+
+
+        function generateWorkout() {
+  var preferences = {};
+  var checkboxes = document.querySelectorAll('#workout-form input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    preferences[checkbox.name] = checkbox.checked;
+  });
+  console.log(preferences);
+}
+
+function generateWorkout() {
+  // Get user preferences
+  var preferences = {};
+  var checkboxes = document.querySelectorAll('#workout-form input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    preferences[checkbox.name] = checkbox.checked;
+  });
+
+  // Query database for matching workouts
+  database.ref('workouts').orderByChild('type').equalTo(true).once('value').then(function(snapshot) {
+    var matchingWorkouts = [];
+    snapshot.forEach(function(childSnapshot) {
+      var workout = childSnapshot.val();
+      if (preferences[workout.type]) {
+        matchingWorkouts.push(workout);
+      }
+    });
+    console.log(matchingWorkouts);
+  });
+}
+        function generateWorkout() {
+        // Get user preferences
+        var preferences = {};
+        var checkboxes = document.querySelectorAll('#work
+
+      var config = {
+  apiKey: "AIzaSyDyW_L7Arqow6M9ztcCmlMde-glmad7Rh4",
+  authDomain: "chicken-a44ee.firebaseapp.com",
+  databaseURL: "https://chicken-a44ee-default-rtdb.firebaseio.com/",
+  projectId: "chicken-a44ee",
+  storageBucket: "chicken-a44ee.appspot.com",
+  messagingSenderId: "861457030837"
+};
+firebase.initializeApp(config);
+
+
+        var database = firebase.database();
+
+
+        database.ref('workouts').once('value').then(function(snapshot) {
+        var workoutPlanner = '';
+        snapshot.forEach(function(childSnapshot) {
+            var workout = childSnapshot.val();
+            workoutPlanner += '<div><h2>' + workout.name + '</h2><p>' + workout.description + '</p></div>';
+        });
+        document.getElementById('workout-planner').innerHTML = workoutPlanner;
+        });
+
+        function logWorkout(workoutId) {
+        database.ref('logs').push({
+            workoutId: workoutId,
+            date: Date.now()
+        });
+        }
+
+        function login() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            var user = result.user;
+            document.getElementById('user-profile').innerHTML = 'Logged in as ' + user.displayName;
+        }).catch(function(error) {
+            console.error(error);
+        });
+        }
+
+
+                function logWorkout(workoutId) {
+        var user = firebase.auth().currentUser;
+        if (user) {
+            database.ref('logs/' + user.uid).push({
+            workoutId: workoutId,
+            date: Date.now()
+            });
+        } else {
+            console.log('User not logged in');
+        }
+        }
+
+
+
+                snapshot.forEach(function(childSnapshot) {
+        var workout = childSnapshot.val();
+        workoutPlanner += '<div><h2>' + workout.name + '</h2><p>' + workout.description + '</p>';
+        workoutPlanner += '<button onclick="logWorkout(\'' + childSnapshot.key + '\')">Log</button></div>';
+        });
+        <script> -->
+
+
+
+
+
+
+            <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Workout Planner</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Workout Planner</h1>
+      <p id="user-profile"></p>
+    </div>
+    <div id="workout-planner"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js%22%3E</script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js%22%3E</script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js%22%3E</script>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+
