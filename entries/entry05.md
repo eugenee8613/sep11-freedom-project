@@ -1,8 +1,18 @@
 # Entry 5
-##### X/X/XX
+##### 4/23/23
+ I had the opportunity to learn Firebase, a powerful and flexible backend-as-a-service (BaaS) platform that allowed me to easily incorporate real-time data synchronization and authentication into my web applications. One of the projects I worked on was building a workout planner using Firebase, and I am excited to share my journey and the process of building a Minimum Viable Product (MVP) for my workout planner using Firebase.
 
-Text
+To get started, I included the Firebase JavaScript libraries in my HTML file using the CDN links for Firebase App, Firebase Auth, and Firebase Database. I also initialized Firebase with my project's configuration by providing the necessary API key, authentication domain, database URL, project ID, storage bucket, and messaging sender ID. This allowed me to establish a connection between my web application and the Firebase backend.
 
+Next, I created a simple HTML form with checkboxes for the user to select their workout preferences, such as upper body, lower body, and cardio exercises. I also added a submit button to trigger the generation of a workout based on the user's preferences. I attached an event listener to the form's submit event and called the generateWorkout() function to handle the logic for generating the workout.
+
+In the generateWorkout() function, I first retrieved the user's preferences by querying the checkboxes and storing the values in an object called preferences. Then, I used Firebase's Realtime Database to query for workouts that matched the user's preferences. I used the orderByChild() and equalTo() methods to filter the workouts based on the 'type' field in my Firebase database, which represented the different workout types (upper body, lower body, and cardio). I used the once() method to retrieve the data from the database as a snapshot, and then iterated through the snapshot to extract the workout data.
+
+At this point, I was able to append the generated workout to the workout planner div in my HTML file. However, I needed to add additional logic to filter the workouts based on the user's preferences before appending them to the DOM. For example, I could check if the workout type matched any of the user-selected preferences, and only append the workout if it did. I could also add additional logic to randomize the selection of workouts or limit the number of workouts generated based on the user's preferences.
+
+Overall, Firebase made it easy for me to incorporate real-time data synchronization and authentication into my workout planner project. The ability to query and retrieve data from the Firebase Realtime Database in real-time was particularly powerful, allowing me to build dynamic and responsive web applications. Firebase also provided built-in authentication functionality, which I could have leveraged to authenticate users and store user-specific data, such as workout history or user preferences, in Firebase's NoSQL database.
+
+In conclusion, learning Firebase in my software engineering class was a valuable experience. Building a workout planner using Firebase allowed me to practice working with real-time data synchronization, querying data from a NoSQL database, and integrating authentication functionality into my web application. I am excited to continue exploring Firebase and leveraging its capabilities in future projects, and I highly recommend it as a powerful backend-as-a-service platform for web development projects.
 [Previous](entry04.md) | [Next](entry06.md)
 
 [Home](../README.md)
