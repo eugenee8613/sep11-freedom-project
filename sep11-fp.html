@@ -175,28 +175,9 @@ firebase.initializeApp(config);
         });
         }
 
-        function login() {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider).then(function(result) {
-            var user = result.user;
-            document.getElementById('user-profile').innerHTML = 'Logged in as ' + user.displayName;
-        }).catch(function(error) {
-            console.error(error);
-        });
-        }
 
 
-                function logWorkout(workoutId) {
-        var user = firebase.auth().currentUser;
-        if (user) {
-            database.ref('logs/' + user.uid).push({
-            workoutId: workoutId,
-            date: Date.now()
-            });
-        } else {
-            console.log('User not logged in');
-        }
-        }
+
 
 
 
