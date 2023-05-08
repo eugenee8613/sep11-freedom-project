@@ -3,86 +3,75 @@
   <head>
     <meta charset="UTF-8">
     <title>Workout Planner</title>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+      import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+      const config = {
+        apiKey: "AIzaSyDyW_L7Arqow6M9ztcCmlMde-glmad7Rh4",
+        authDomain: "chicken-a44ee.firebaseapp.com",
+        databaseURL: "https://chicken-a44ee-default-rtdb.firebaseio.com/",
+        projectId: "chicken-a44ee",
 
+      };
+        // Add a second document with a generated ID.
+      import { addDoc, collection } from "firebase/firestore";
+
+      try {
+        const docRef = await addDoc(collection(db, "users"), {
+          first: "Alan",
+          middle: "Mathison",
+          last: "Turing",
+          born: 1912
+        });
+
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+      const firebaseApp = initializeApp(config);
+
+      const generateWorkoutBtn = document.getElementById('generate-workout-btn');
+      generateWorkoutBtn.addEventListener('click', getRandomWorkout);
+
+      function getRandomWorkout() {
+        const db = getFirestore(firebaseApp);
+        const workoutsRef = collection(db, 'workout');
+        const folder1Ref = collection(db,'workout/chest-workouts/bench');
+
+        getDocs(folder1Ref).then((querySnapshot) => {
+          const workoutList = [];
+          querySnapshot.forEach((doc) => {
+            const workoutName = doc.data().name;
+            const workoutDesc = doc.data().description;
+            const workoutExercises = doc.data().exercises;
+            const workoutInfo = `${workoutName}: ${workoutDesc} (${workoutExercises.join(', ')})`;
+            workoutList.push(workoutInfo);
+          });
+          const workoutInfoEl = document.getElementById('workout-info');
+          workoutInfoEl.innerHTML = '';
+          const randomIndex = Math.floor(Math.random() * workoutList.length);
+          const workoutEl = document.createElement('p');
+          workoutEl.textContent = workoutList[randomIndex];
+          workoutInfoEl.appendChild(workoutEl);
+
+          console.log(workoutInfo);
+        })
+
+
+
+        .catch((error) => {
+          console.log('Error getting documents: ', error);
+        });
+      }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
     <h1>Workout Planner</h1>
-    <button id="my-button">Generate Workout</button>
-<p id="my-text"></p>
-
-
-    <!-- <button id="generate-workout-btn">Generate Workout</button> -->
+    <button id="generate-workout-btn">Generate Workout</button>
+    <p id="my-text"></p>
     <section id="workout-info"></section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script type="module" src="path/to/main.js">
-            // JS
-
-
-
-
-
-
-firebase.initializeApp(config,{
-
-  apiKey: "AIzaSyDyW_L7Arqow6M9ztcCmlMde-glmad7Rh4",
-  authDomain: "chicken-a44ee.firebaseapp.com",
-  databaseURL: "https://chicken-a44ee-default-rtdb.firebaseio.com/",
-  projectId: "chicken-a44ee",
-});
-
-firebase.initializeApp(firebaseConfig);
-
-const button = document.getElementById('generate-workout-btn');
-
-
-button.addEventListener('click', () => {
-
-
-});
-
-const workoutsRef = firebase.firestore().collection('workouts');
-workoutsRef.add({
-  name: 'Treadmill Run',
-  description: 'A 30-minute run on the treadmill',
-  exercises: ['Treadmill']
-});
-workoutsRef.add({
-  name: 'Stationary Bike',
-  description: 'A 30-minute ride on the stationary bike',
-  exercises: ['Stationary Bike']
-});
-workoutsRef.add({
-  name: 'Elliptical Trainer',
-  description: 'A 30-minute workout on the elliptical trainer',
-  exercises: ['Elliptical Trainer']
-});
-
-
-function getRandomWorkout() {
-  const randomIndex = Math.floor(Math.random() * 3);
-
-  workoutsRef.limit(1).skip(randomIndex).get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const workoutName = doc.data().name;
-        const workoutDesc = doc.data().description;
-        const workoutExercises = doc.data().exercises;
-        const workoutInfo = `${workoutName}: ${workoutDesc} (${workoutExercises.join(', ')})`;
-
-
-        const workoutInfoEl = document.getElementById('workout-info');
-        workoutInfoEl.textContent = workoutInfo;
-      });
-    })
-    .catch((error) => {
-      console.log('Error getting documents: ', error);
-    });
-}
-
-        </script>
   </body>
 </html>
