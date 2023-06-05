@@ -3,107 +3,25 @@
   <head>
     <meta charset="UTF-8">
     <title>Workout Planner</title>
+    <body>
+      <h1>Workout Planner</h1>
+      <p>Instructions: PRESS on the button "Generate Workout" Then click ctrl click to inspect console.</p>
+      <button id="generate-workout-btn">Generate Workout</button>
+      <p id="my-text"></p>
+      <section id="workout-info"></section>
+    </body>
     <script type="module">
-      // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
-      // import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+      import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
-      // const config = {
-      //   apiKey: "AIzaSyDyW_L7Arqow6M9ztcCmlMde-glmad7Rh4",
-      //   authDomain: "chicken-a44ee.firebaseapp.com",
-      //   databaseURL: "https://chicken-a44ee-default-rtdb.firebaseio.com/",
-      //   projectId: "chicken-a44ee",
-
-      // };
-
-      //   // Add a second document with a generated ID.
-      // import { addDoc, collection } from "firebase/firestore";
-
-      // try {
-      //   const docRef = await addDoc(collection(db, "users"), {
-      //     first: "Alan",
-      //     middle: "Mathison",
-      //     last: "Turing",
-      //     born: 1912
-      //   });
-
-      //   console.log("Document written with ID: ", docRef.id);
-      // } catch (e) {
-      //   console.error("Error adding document: ", e);
-      // }
-      // const firebaseApp = initializeApp(config);
-
-      // const generateWorkoutBtn = document.getElementById('generate-workout-btn');
-      // generateWorkoutBtn.addEventListener('click', getRandomWorkout);
-
-      // function getRandomWorkout() {
-      //   const db = getFirestore(firebaseApp);
-      //   const workoutsRef = collection(db, 'workout');
-      //   const folder1Ref = collection(db,'workout/chest-workouts/bench');
-
-      //   getDocs(folder1Ref).then((querySnapshot) => {
-      //     const workoutList = [];
-      //     querySnapshot.forEach((doc) => {
-      //       const workoutName = doc.data().name;
-      //       const workoutDesc = doc.data().description;
-      //       const workoutExercises = doc.data().exercises;
-      //       const workoutInfo = `${workoutName}: ${workoutDesc} (${workoutExercises.join(', ')})`;
-      //       workoutList.push(workoutInfo);
-      //     });
-      //     const workoutInfoEl = document.getElementById('workout-info');
-      //     workoutInfoEl.innerHTML = '';
-      //     const randomIndex = Math.floor(Math.random() * workoutList.length);
-      //     const workoutEl = document.createElement('p');
-      //     workoutEl.textContent = workoutList[randomIndex];
-      //     workoutInfoEl.appendChild(workoutEl);
-
-      //     console.log(workoutInfo);
-      //   })
-
-
-
-      //   .catch((error) => {
-      //     console.log('Error getting documents: ', error);
-      //   });
-      // }
-      const firebaseApp = initializeApp(config);
-
-const generateWorkoutBtn = document.getElementById('generate-workout-btn');
-generateWorkoutBtn.addEventListener('click', getRandomWorkout);
-
-function getRandomWorkout() {
-  const db = getFirestore(firebaseApp);
-  // const workoutsRef = collection(db, 'workout');
-  const folder1Ref = collection(db,'workout');
-
-  getDocs(folder1Ref).then((querySnapshot) => {
-    const workoutList = [];
-    querySnapshot.forEach((doc) => {
-      const workoutName = doc.data().bench; console.log(doc.data())
-      // const workoutDesc = doc.data().description;
-      // const workoutExercises = doc.data().exercises;
-      // const workoutInfo = `${workoutName}: ${workoutDesc} (${workoutExercises.join(', ')})`;
-      // workoutList.push(workoutInfo);
-
-    });
-    const workoutInfoEl = document.getElementById('workout-info');
-    workoutInfoEl.innerHTML = '';
-    const randomIndex = Math.floor(Math.random() * workoutList.length);
-    const workoutEl = document.createElement('p');
-    workoutEl.textContent = workoutList[randomIndex];
-    workoutInfoEl.appendChild(workoutEl);
-
-    console.log(workoutInfo);
-  })
-  .catch((error) => {
-    console.log('Error getting documents: ', error);
-  });
-}
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
+      const config = {
+        apiKey: "AIzaSyDyW_L7Arqow6M9ztcCmlMde-glmad7Rh4",
+        authDomain: "chicken-a44ee.firebaseapp.com",
+        databaseURL: "https://chicken-a44ee-default-rtdb.firebaseio.com/",
+        projectId: "chicken-a44ee",
+      };
 
       const firebaseApp = initializeApp(config);
-
       const generateWorkoutBtn = document.getElementById('generate-workout-btn');
       generateWorkoutBtn.addEventListener('click', getRandomWorkout);
 
@@ -135,14 +53,7 @@ function getRandomWorkout() {
           console.log('Error getting documents: ', error);
         });
       }
-
     </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
-  <body>
-    <h1>Workout Planner</h1>
-    <button id="generate-workout-btn">Generate Workout</button>
-    <p id="my-text"></p>
-    <section id="workout-info"></section>
-  </body>
-</html>
+
